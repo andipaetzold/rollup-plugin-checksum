@@ -1,0 +1,41 @@
+{
+  "name": "rollup-plugin-checksum",
+  "description": "Rollup plugin that emits a file containing the checksum of all emitted chunks and assets.",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "rollup --config test/rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andipaetzold/rollup-plugin-checksum.git"
+  },
+  "author": {
+    "name": "Andi Pätzold",
+    "email": "github@andipaetzold.com",
+    "url": "https://github.com/andipaetzold"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andipaetzold/rollup-plugin-checksum/issues"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@tsconfig/node12": "1.0.7",
+    "rollup": "2.43.0",
+    "semantic-release": "17.4.2",
+    "typescript": "4.2.3"
+  },
+  "peerDependencies": {
+    "rollup": ">=1.26.0"
+  },
+  "dependencies": {
+    "@types/node": ">=12"
+  }
+}

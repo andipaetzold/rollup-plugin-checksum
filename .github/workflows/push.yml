@@ -1,0 +1,32 @@
+name: Build & Publish
+
+on:
+  - push
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Get node version
+        id: node-version
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - name: Use node ${{ matrix.node }}
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: ${{ steps.node-version.outputs.NODE_VERSION }}
+
+      - run: npm install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+
+      - name: Semantic Releases
+        run: npm run semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
